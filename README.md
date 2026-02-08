@@ -35,7 +35,7 @@
     
     •Sample JSON Requests / Responses
     
-      •Create Activity — POST /api/activities
+      •Create Workouts — POST /api/activities
       
           {
             "userId": 1,
@@ -54,7 +54,7 @@
             "caloriesBurned": 350
           }
           
-      •Get All Activities — GET /api/activities
+      •Get All Workouts — GET /api/activities
       
           [
             {
