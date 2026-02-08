@@ -25,12 +25,12 @@
     •Endpoints List
 
     
-    • /api/activities	        GET	      Get all fitness activities
-    • /api/activities/{id}	  GET	      Get activity by ID
-    • /api/activities	        POST	    Create new activity
-    • /api/activities/{id}  	PUT	      Update activity
-    • /api/activities/{id}	  DELETE	  Delete activity
-    • /health	                GET	      Health check
+    • /api/workouts            GET	      Get all fitness activities
+    • /api/workouts/{id}       GET	      Get activity by ID
+    • /api/workouts	           POST	    Create new activity
+    • /api/workouts/{id}  	   PUT	      Update activity
+    • /api/workouts/{id}	    DELETE	  Delete activity
+    • /health	                 GET	      Health check
 
     
     •Sample JSON Requests / Responses
