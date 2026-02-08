@@ -68,6 +68,16 @@
 
         
     •Postman Screenshots
+    
+<img width="2940" height="1912" alt="9AFFEB53-39B1-4AFF-9576-12B8939B07E8" src="https://github.com/user-attachments/assets/ac38e7e8-d36a-4281-8903-873f217b9717" />
+
+<img width="2940" height="1912" alt="F7CD9F53-E4E9-410B-A3B4-FE303DFA68DD" src="https://github.com/user-attachments/assets/ceb1a6b7-7907-4d48-981a-70c0c16fbd04" />
+
+<img width="2940" height="1912" alt="75A04A6D-29F5-4B78-AFBB-7214825FAC84" src="https://github.com/user-attachments/assets/ff427eb6-31d2-4f8e-9725-03b14e40d18f" />
+
+<img width="2940" height="1912" alt="2E2BAB43-0243-42E3-9E43-2BA2AE31A31F" src="https://github.com/user-attachments/assets/61eafe68-bcf3-41fd-bd62-e160b01c1f81" />
+
+<img width="2940" height="1912" alt="8929881F-7A49-4C05-AF5F-204A83F6E693" src="https://github.com/user-attachments/assets/41c63819-05e9-4f57-8c94-749321752720" />
 
 
     
@@ -161,18 +171,42 @@
 •G. System Architecture Diagram
 
 
-    The project follows a layered architecture:
+    The diagram illustrates the layered architecture of the Fitness Tracker
+    Spring Boot REST API.
+
+      The application is structured as follows:
+
+        •Client (Postman / Browser) 
+        Sends HTTP requests to the REST API.
+
+        •Controller Layer (`WorkoutController`) 
+        Handles incoming HTTP requests, maps endpoints, and returns responses.
+
+        •Service Layer (`WorkoutService`)
+        Contains the business logic and coordinates application workflows.
+
+        •Repository Layer (`WorkoutRepository`)
+        Manages data access using JDBC and communicates with the database.
+
+        •Database (PostgreSQL)
+        Stores fitness workout data.
+
+    Additional architectural components:
+
+      •Global Exception Handling
+        Implemented using `GlobalExceptionHandler` and custom exceptions
+        such as `WorkoutNotFoundException`.
+
+      •Design Patterns Integration
+        The system applies Factory, Builder, and Singleton patterns
+        to ensure clean object creation and configuration.
+
+      The architecture follows the classic layered design pattern,
+      promoting separation of concerns, maintainability, and scalability.
+
+   <img width="1376" height="1316" alt="062D6656-2FAF-4707-ADC3-170DD58096E9" src="https://github.com/user-attachments/assets/d460d654-0316-47b5-b8aa-3a4869a0d4bb" />
+
     
-      Controller → Service → Repository → Database
-
-      
-      •Controller handles HTTP requests
-      •Service contains business logic
-      •Repository handles JDBC database operations
-      •Database stores fitness data
-      
-    Architecture diagram is included as a UML/PlantUML image in the project.
-
     
 •H. Instructions to Run the Spring Boot Application
 
