@@ -1,4 +1,4 @@
-  README 
+    README 
 
 •A. Project Overview
 
@@ -242,3 +242,51 @@
       •Document APIs clearly using README and Postman
       
     Overall, this project improved my backend development skills and understanding of clean architecture.
+
+•Bonus Task
+
+    •Objective:
+    
+      Implement a simple in-memory caching mechanism to improve application performance by reducing unnecessary database queries.
+
+      
+    •Cache Strategy:
+    
+      The result of the getAll() method is stored in memory after the first request.
+      Subsequent calls to the endpoint GET /api/workouts/ return cached data instead of querying the database again.
+      
+      This reduces database load and improves response time.
+
+      
+    •Design Pattern Used:
+      Singleton
+      
+      A dedicated WorkoutCache class was implemented using the Singleton pattern.
+      This guarantees that only one cache instance exists during the application lifecycle and ensures centralized cache management.
+
+      
+    •Automatic Cache Invalidation:
+    
+      To maintain data consistency, the cache is automatically cleared after:
+        •create()
+        •update()
+        •delete()
+        
+      This prevents outdated data from being returned.
+      
+    •Manual Cache Clearing:
+    
+        A manual cache reset endpoint was added:
+        
+      DELETE /api/workouts/cache
+      
+      This allows explicit cache invalidation when required.
+      
+    •Architecture Compliance:
+    
+      •Cache stored fully in memory using Java collections
+      •Layered architecture preserved (Controller → Service → Repository)
+      •SOLID principles maintained
+      •No external caching libraries used
+      
+    The bonus implementation improves performance while preserving clean architecture and correct system behavior.
