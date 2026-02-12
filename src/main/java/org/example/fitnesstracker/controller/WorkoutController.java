@@ -45,4 +45,9 @@ public class WorkoutController {
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
+
+    @DeleteMapping("/cache")
+    public void clearCache() {
+        service.clearCache();
+    }
 }

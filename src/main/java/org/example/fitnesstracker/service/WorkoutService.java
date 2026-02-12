@@ -1,8 +1,9 @@
 package org.example.fitnesstracker.service;
 
-import org.example.fitnesstracker.repository.WorkoutRepository;
-import org.example.fitnesstracker.model.Workout;
+import org.example.fitnesstracker.cache.WorkoutCache;
 import org.example.fitnesstracker.exception.WorkoutNotFoundException;
+import org.example.fitnesstracker.model.Workout;
+import org.example.fitnesstracker.repository.WorkoutRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,16 +13,27 @@ public class WorkoutService {
 
     private final WorkoutRepository repository;
 
+    private final WorkoutCache cache = WorkoutCache.getInstance();
+
     public WorkoutService(WorkoutRepository repository) {
         this.repository = repository;
     }
 
     public Workout create(Workout workout) {
-        return repository.save(workout);
+        Workout saved = repository.save(workout);
+
+        cache.invalidateAll();
+        return saved;
     }
 
     public List<Workout> getAll() {
-        return repository.findAll();
+        if (cache.hasAllWorkouts()) {
+            return cache.getAllWorkouts();
+        }
+
+        List<Workout> workouts = repository.findAll();
+        cache.setAllWorkouts(workouts);
+        return workouts;
     }
 
     public Workout getById(Long id) {
@@ -34,11 +46,21 @@ public class WorkoutService {
         existing.setType(workout.getType());
         existing.setDuration(workout.getDuration());
         existing.setCalories(workout.getCalories());
-        return repository.save(existing);
+
+        Workout saved = repository.save(existing);
+
+        cache.invalidateAll();
+        return saved;
     }
 
     public void delete(Long id) {
         Workout existing = getById(id);
         repository.delete(existing);
+
+        cache.invalidateAll();
+    }
+
+    public void clearCache() {
+        cache.clear();
     }
 }
